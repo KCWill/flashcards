@@ -14,9 +14,24 @@ describe('Round', function() {
   });
 
   it('should be an instance of round', function() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s favorite stress reliever?', ['listening to music', 'watching Netflix', 'playing with bubble wrap'], 'playing with bubble wrap');
+    const card1 = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answers": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
+    const card3 = new Card({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answers": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    });
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
 
@@ -24,19 +39,48 @@ describe('Round', function() {
   });
 
   it('should store cards in an array', function() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
-
+    const card1 = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answers": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
+    const card3 = new Card({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answers": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    });
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
     expect(round.deck).to.deep.equal([card1, card2, card3]);
   });
 
   it('should return the current card being played', function() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const card1 = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answers": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
+    const card3 = new Card({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answers": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    });
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
     let curCard = round.returnCurrentCard();
@@ -44,74 +88,166 @@ describe('Round', function() {
   });
 
   it('should give feedback', function() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const card1 = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answers": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
+    const card3 = new Card({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answers": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    });
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
-    let correct = round.takeTurn('sea otter');
-    expect(correct).to.equal('Correct!')
-    let incorrect = round.takeTurn('spleen');
-    expect(incorrect).to.equal('Incorrect!');
+    let correct = round.takeTurn('object');
+    expect(correct).to.equal('correct!')
+    let incorrect = round.takeTurn('function');
+    expect(incorrect).to.equal('incorrect!');
   });
 
   it('should count number of turns', function() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const card1 = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answers": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
+    const card3 = new Card({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answers": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    });
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
-    round.takeTurn('unicorn');
-    round.takeTurn('badger');
+    expect(round.turns).to.equal(0);
+    round.takeTurn('object');
+    expect(round.turns).to.equal(1);
+    round.takeTurn('function');
     expect(round.turns).to.equal(2);
   });
 
   it('should store incorrect guesses', function() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const card1 = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answers": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
+    const card3 = new Card({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answers": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    });
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
-    round.takeTurn('capybara');
-    round.takeTurn('appendix');
-    expect(round.incorrectGuesses).to.deep.equal([14, 12]);
+    round.takeTurn('array');
+    round.takeTurn('function');
+    expect(round.incorrectGuesses).to.deep.equal([1, 2]);
   });
 
   it('should go to next card after turn taken', function() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const card1 = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answers": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
+    const card3 = new Card({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answers": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    });
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
     expect(round.returnCurrentCard()).to.equal(card1)
-    let ans1 = round.takeTurn('sea otter');
+    let ans1 = round.takeTurn('object');
     expect(round.returnCurrentCard()).to.equal(card2)
-    let ans2 = round.takeTurn('spleen');
+    let ans2 = round.takeTurn('function');
     expect(round.returnCurrentCard()).to.equal(card3)
   });
 
   it('should calculate percent correct', function() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const card1 = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answers": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
+    const card3 = new Card({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answers": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    });
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
-    let ans1 = round.takeTurn('sea otter');
+    let ans1 = round.takeTurn('object');
     let calc1 = round.calculatePercentCorrect();
     expect(calc1).to.equal(100)
-    let ans2 = round.takeTurn('spleen');
+    let ans2 = round.takeTurn('function');
     let calc2 = round.calculatePercentCorrect();
     expect(calc2).to.equal(50)
   });
 
   it('should end the round by printing out % answers correct', function() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const card1 = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answers": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
+    const card3 = new Card({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answers": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    });
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
-    let ans1 = round.takeTurn('sea otter');
-    let ans2 = round.takeTurn('spleen');
+    let ans1 = round.takeTurn('object');
+    let ans2 = round.takeTurn('function');
     expect(round.endRound()).to.equal(`**Round over!** You answered 50% of the questions correctly!`)
   });
 });

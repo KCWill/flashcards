@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 
+
 const genList = (round) => {
   let card = round.returnCurrentCard();
 
@@ -35,11 +36,21 @@ async function main(round) {
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
 
-    if(!round.returnCurrentCard()) {
+    if(!round.returnCurrentCard() && round.calculatePercentCorrect() < 90) {
+      console.log(`You answered ${round.calculatePercentCorrect()}% of the questions correctly, try again! Restarting in 5...`)
+      setTimeout(() => {console.log('4')},1000);
+      setTimeout(() => {console.log('3')},2000);
+      setTimeout(() => {console.log('2')},3000);
+      setTimeout(() => {console.log('1')},4000);
+      round.turns = 0;
+      round.incorrectGuesses = [];
+      setTimeout(() => {main(round)}, 5000);
+    } else if (!round.returnCurrentCard()){
       round.endRound();
-    } else {
-      main(round);
     }
+      else {
+        main(round);
+      }
 }
 
 module.exports.main = main;

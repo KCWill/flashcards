@@ -17,43 +17,67 @@ describe('Turn', function() {
   });
 
   it('should store user\'s guess', function() {
-    const turn = new Turn('Clever guess');
-    expect(turn.userGuess).to.equal('Clever guess');
+    const turn = new Turn('object');
+    expect(turn.userGuess).to.equal('object');
   });
 
   it('should store card object for current card in play', function() {
-    const card = new Card(1, 'What is Robbie\'s favorite animal?', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const turn = new Turn('pug', card)
-    expect(turn.userGuess).to.equal('pug');
+    const card = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const turn = new Turn('object', card)
+    expect(turn.userGuess).to.equal('object');
     expect(turn.card).to.deep.equal(card);
   });
 
   it('should return user\'s guess', function() {
-    const card = new Card(1, 'What is Robbie\'s favorite animal?', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const turn = new Turn('pug', card)
+    const card = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const turn = new Turn('object', card)
     const guess = turn.returnGuess();
-    expect(guess).to.equal('pug');
+    expect(guess).to.equal('object');
   });
   it('should return the card', function() {
-    const card = new Card(1, 'What is Robbie\'s favorite animal?', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const turn = new Turn('pug', card)
+    const card = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const turn = new Turn('object', card)
     const currentCard = turn.returnCard();
     expect(currentCard).to.deep.equal(card);
   });
 
   it('should evaluate guess', function() {
-    const card = new Card(1, 'What is Robbie\'s favorite animal?', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const turn = new Turn('pug', card);
+    const card = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const turn = new Turn('function', card);
     expect(turn.evaluateGuess()).to.equal(false);
-    const turn1 = new Turn('sea otter', card);
+    const turn1 = new Turn('object', card);
     expect(turn1.evaluateGuess()).to.equal(true);
   });
   it('should give feedback', function() {
-    const card = new Card(1, 'What is Robbie\'s favorite animal?', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const turn = new Turn('pug', card);
-    expect(turn.giveFeedback()).to.equal('Incorrect!');
-    const turn1 = new Turn('sea otter', card);
-    expect(turn1.giveFeedback()).to.equal('Correct!');
+    const card = new Card({
+      "id": 1,
+      "question": "What allows you to define a set of related information using key-value pairs?",
+      "answers": ["object", "array", "function"],
+      "correctAnswer": "object"
+    });
+    const turn = new Turn('function', card);
+    expect(turn.giveFeedback()).to.equal('incorrect!');
+    const turn1 = new Turn('object', card);
+    expect(turn1.giveFeedback()).to.equal('correct!');
   });
-
 });
