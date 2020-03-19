@@ -13,12 +13,13 @@ class Game {
 
   start() {
     let cards = [];
-    for (var i = 0; i < prototypeQuestions.length; i++){
-      let card = new Card(prototypeQuestions[i])
+    for (let i = 0; i < prototypeQuestions.length; i++){
+      let card = new Card(prototypeQuestions[i]);
       cards.push(card);
     };
     let deck = new Deck(cards);
     let round = new Round(deck);
+    this.currentRound.push(round);
     this.printMessage(deck, round);
     this.printQuestion(round);
   }

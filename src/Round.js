@@ -1,6 +1,4 @@
 const Turn = require('./Turn');
-const Game = require('./Game');
-const util = require('./util');
 
 class Round {
   constructor(deck) {
@@ -28,16 +26,9 @@ class Round {
   }
 
   endRound() {
-    console.log('Good!');
-    // if (this.calculatePercentCorrect() >= 90){
-    //   console.log(`**Round over!** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`)
-    // } else if(this.calculatePercentCorrect() < 90) {
-    //   let newRound = new Round(this.cards);
-    //   this.turns = 0;
-    //   this.incorrectGuesses = [];
-    //   util.main(newRound);
+      return `**Round over!** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`
     }
 }
 
 
-module.exports = Round, Game;
+module.exports = Round;

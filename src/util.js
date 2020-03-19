@@ -46,7 +46,7 @@ async function main(round) {
       round.incorrectGuesses = [];
       setTimeout(() => {main(round)}, 5000);
     } else if (!round.returnCurrentCard()){
-      round.endRound();
+      return round.endRound();
     }
       else {
         main(round);
