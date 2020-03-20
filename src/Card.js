@@ -1,5 +1,5 @@
 class Card {
-  constructor(data){
+  constructor(data) {
     this.id = data.id;
     this.question = data.question;
     this.answers = data.answers;

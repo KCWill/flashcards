@@ -9,8 +9,7 @@ const Round = require('../src/Round');
 describe('Round', function() {
 
   it('should be a function', function() {
-    const deck = new Deck();
-    expect(Deck).to.be.a('function');
+    expect(Round).to.be.a('function');
   });
 
   it('should be an instance of round', function() {
